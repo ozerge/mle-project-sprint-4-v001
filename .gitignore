@@ -166,6 +166,7 @@ cython_debug/
 *.pickle
 *.csv
 *.npz
+*.cbm
 
 # project environment
 env_recsys_start/
