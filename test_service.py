@@ -190,7 +190,7 @@ if __name__ == "__main__":
         test_case_2()
         test_case_3()
 
-        logger.info("🎉 All tests completed successfully!")
+        logger.info("All tests completed successfully!")
 
     except Exception as e:
         logger.error(f"❌ Test failed: {e}")
