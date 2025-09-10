@@ -59,11 +59,69 @@ jupyter lab --ip=0.0.0.0 --no-browser
 
 Код для выполнения первой части проекта находится в файле `recommendations.ipynb`. Изначально, это шаблон. Используйте его для выполнения первой части проекта.
 
+
+### Файлы с рекомендациями:
+
+ - топ популярных — в `top_popular.parquet`
+ - персональные (при помощи ALS) — в `personal_als.parquet`
+ - похожие треки (i2i при помощи ALS) — в `similar.parquet`
+ - итоговые рекомендации — в `recommendations.parquet`
+
 # Сервис рекомендаций
 
 [Код сервиса рекомендаций находится в файле `recommendations_service.py`.](recommendations_service.py)
 
-<*укажите здесь необходимые шаги для запуска сервиса рекомендаций*>
+Структура проекта
+```bash
+├── recommendations_service.py  # Основной сервис
+├── test_service.py             # Тесты
+├── test_service.log            # Результаты тестов
+├── utils.py                    # Вспомогательные функции
+├── .env                        # Переменные окружения
+└── README.md                   # Документация
+```
+Стратегия смешивания рекомендаций:  
+1.Офлайн-рекомендации  
+ - Источник: Предварительно вычисленные рекомендации (CatBoost)  
+ - Для: Известных пользователей - персонализированные рекомендации
+ - Для: Холодных пользователей - топ-популярные треки
+ 
+2.Онлайн-рекомендации  
+ - Источник: События прослушивания в реальном времени
+ - Механизм: Поиск похожих треков через similar-матрицу
+
+3.Алгоритм смешивания  
+ - Чередование: Онлайн и офлайн рекомендации чередуются
+ - Дедубликация: Удаление повторяющихся треков
+ - Баланс: Сохранение пропорций при наличии истории  
+Формула: Для пользователя с историей - 50% онлайн, 50% офлайн рекомендаций  
+
+API Endpoints:
+ - GET /recommendations/{user_id}?k=100 - Получение рекомендаций  
+ - POST /event?user_id=123&track_id=456 - Добавление события  
+ - GET /events/{user_id} - История событий  
+ - GET /health - Проверка здоровья  
+
+### Необходимые шаги для запуска сервиса рекомендаций:
+- Установите необходимые библиотеки:  
+```bash
+pip install -r requirements2.txt 
+```
+- Настройте переменные окружения в .env:
+```bash
+S3_ENDPOINT_URL=your_s3_endpoint
+AWS_ACCESS_KEY_ID=your_access_key
+AWS_SECRET_ACCESS_KEY=your_secret_key
+S3_BUCKET_NAME=your_bucket_name
+KEY_RECOMMENDATIONS_PARQUET=path_to_the_file_recommendations.parquet
+KEY_TOP_POPULAR_PARQUET=path_to_the_file_top_popular.parquet
+KEY_SIMILAR_PARQUET=path_to_the_file_similar.parquet
+KEY_ITEMS_PARQUET=path_to_the_file_items.parquet
+```
+- Запустите сервис:
+```bash
+uvicorn recommendations_service:app --reload 
+```
 
 # Инструкции для тестирования сервиса
 
