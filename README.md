@@ -113,10 +113,10 @@ S3_ENDPOINT_URL=your_s3_endpoint
 AWS_ACCESS_KEY_ID=your_access_key
 AWS_SECRET_ACCESS_KEY=your_secret_key
 S3_BUCKET_NAME=your_bucket_name
-KEY_RECOMMENDATIONS_PARQUET=path_to_the_file_recommendations.parquet
-KEY_TOP_POPULAR_PARQUET=path_to_the_file_top_popular.parquet
-KEY_SIMILAR_PARQUET=path_to_the_file_similar.parquet
-KEY_ITEMS_PARQUET=path_to_the_file_items.parquet
+KEY_RECOMMENDATIONS_PARQUET=path_to_recommendations.parquet
+KEY_TOP_POPULAR_PARQUET=path_to_top_popular.parquet
+KEY_SIMILAR_PARQUET=path_to_similar.parquet
+KEY_ITEMS_PARQUET=path_to_items.parquet
 ```
 - Запустите сервис:
 ```bash
