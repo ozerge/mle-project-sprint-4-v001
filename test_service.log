@@ -1,0 +1,122 @@
+2025-09-09 09:15:27,265 - INFO - Starting recommendation service tests...
+2025-09-09 09:15:27,265 - INFO - === Testing Health Endpoint ===
+2025-09-09 09:15:27,269 - INFO - Health status: {'status': 'healthy', 'data_loaded': True, 'recommendations_loaded': True, 'top_popular_loaded': True, 'similar_loaded': True, 'items_loaded': True}
+2025-09-09 09:15:27,269 - INFO - ✓ Health test passed
+
+2025-09-09 09:15:27,269 - INFO - === Testing Events Endpoint ===
+2025-09-09 09:15:27,271 - INFO - Added event: user 100, track 500
+2025-09-09 09:15:27,274 - INFO - Events data: {'user_id': 100, 'events': [500]}
+2025-09-09 09:15:27,274 - INFO - ✓ Events test passed
+
+2025-09-09 09:15:27,274 - INFO - === Test Case 1: Cold User (no personal recommendations) ===
+2025-09-09 09:15:27,297 - INFO - User ID: 999999999
+2025-09-09 09:15:27,297 - INFO - Requested k: 3
+2025-09-09 09:15:27,298 - INFO - Stats: {'offline_recommendations': 3, 'online_recommendations': 0, 'total_recommendations': 3}
+2025-09-09 09:15:27,298 - INFO - Recommendations:
+2025-09-09 09:15:27,298 - INFO -   [OFFLINE] Track ID: 83063895
+2025-09-09 09:15:27,298 - INFO -     Name: ['Птичка']
+2025-09-09 09:15:27,298 - INFO -     Artist: ['HammAli & Navai']
+2025-09-09 09:15:27,298 - INFO -     Genre: ['pop' 'ruspop']
+2025-09-09 09:15:27,298 - INFO -     ---
+2025-09-09 09:15:27,298 - INFO -   [OFFLINE] Track ID: 81848875
+2025-09-09 09:15:27,298 - INFO -     Name: ['Федерико Феллини']
+2025-09-09 09:15:27,298 - INFO -     Artist: ['Galibri & Mavik']
+2025-09-09 09:15:27,298 - INFO -     Genre: ['pop' 'ruspop']
+2025-09-09 09:15:27,298 - INFO -     ---
+2025-09-09 09:15:27,298 - INFO -   [OFFLINE] Track ID: 84382282
+2025-09-09 09:15:27,298 - INFO -     Name: ['Я в моменте']
+2025-09-09 09:15:27,298 - INFO -     Artist: ['Markul' 'Джарахов']
+2025-09-09 09:15:27,298 - INFO -     Genre: ['rap' 'rusrap']
+2025-09-09 09:15:27,299 - INFO -     ---
+2025-09-09 09:15:27,299 - INFO - ✓ Test 1 passed: Cold user received top popular recommendations
+
+2025-09-09 09:15:27,299 - INFO - === Test Case 2: User with offline recs, no history ===
+2025-09-09 09:15:27,319 - INFO - User ID: 47
+2025-09-09 09:15:27,319 - INFO - Requested k: 4
+2025-09-09 09:15:27,319 - INFO - Stats: {'offline_recommendations': 4, 'online_recommendations': 0, 'total_recommendations': 4}
+2025-09-09 09:15:27,319 - INFO - Recommendations:
+2025-09-09 09:15:27,320 - INFO -   [OFFLINE] Track ID: 83063895
+2025-09-09 09:15:27,320 - INFO -     Name: ['Птичка']
+2025-09-09 09:15:27,320 - INFO -     Artist: ['HammAli & Navai']
+2025-09-09 09:15:27,320 - INFO -     Genre: ['pop' 'ruspop']
+2025-09-09 09:15:27,320 - INFO -     ---
+2025-09-09 09:15:27,320 - INFO -   [OFFLINE] Track ID: 81848875
+2025-09-09 09:15:27,320 - INFO -     Name: ['Федерико Феллини']
+2025-09-09 09:15:27,320 - INFO -     Artist: ['Galibri & Mavik']
+2025-09-09 09:15:27,320 - INFO -     Genre: ['pop' 'ruspop']
+2025-09-09 09:15:27,320 - INFO -     ---
+2025-09-09 09:15:27,320 - INFO -   [OFFLINE] Track ID: 84382282
+2025-09-09 09:15:27,320 - INFO -     Name: ['Я в моменте']
+2025-09-09 09:15:27,320 - INFO -     Artist: ['Markul' 'Джарахов']
+2025-09-09 09:15:27,320 - INFO -     Genre: ['rap' 'rusrap']
+2025-09-09 09:15:27,320 - INFO -     ---
+2025-09-09 09:15:27,320 - INFO -   [OFFLINE] Track ID: 78426489
+2025-09-09 09:15:27,321 - INFO -     Name: ['Rampampam']
+2025-09-09 09:15:27,321 - INFO -     Artist: ['Minelli']
+2025-09-09 09:15:27,321 - INFO -     Genre: ['dance']
+2025-09-09 09:15:27,321 - INFO -     ---
+2025-09-09 09:15:27,321 - INFO - ✓ Test 2 passed: User with offline recs received recommendations
+
+2025-09-09 09:15:27,321 - INFO - === Test Case 3: User with both offline recs and history ===
+2025-09-09 09:15:27,326 - INFO - Added event: user 4, track 97241633
+2025-09-09 09:15:27,329 - INFO - Added event: user 4, track 65457108
+2025-09-09 09:15:27,331 - INFO - Added event: user 4, track 59523137
+2025-09-09 09:15:27,335 - INFO - Added event: user 4, track 69063591
+2025-09-09 09:15:27,337 - INFO - Added event: user 4, track 96366184
+2025-09-09 09:15:27,376 - INFO - User ID: 4
+2025-09-09 09:15:27,376 - INFO - Requested k: 10
+2025-09-09 09:15:27,377 - INFO - Stats: {'offline_recommendations': 5, 'online_recommendations': 5, 'total_recommendations': 10}
+2025-09-09 09:15:27,377 - INFO - Blended Recommendations:
+2025-09-09 09:15:27,377 - INFO -   [ONLINE] Track ID: 92275860
+2025-09-09 09:15:27,377 - INFO -     Name: ['Питер']
+2025-09-09 09:15:27,377 - INFO -     Artist: ['Мари Краймбрери']
+2025-09-09 09:15:27,377 - INFO -     Genre: ['pop' 'ruspop']
+2025-09-09 09:15:27,377 - INFO -     ---
+2025-09-09 09:15:27,377 - INFO -   [OFFLINE] Track ID: 97241633
+2025-09-09 09:15:27,377 - INFO -     Name: ['Shivers']
+2025-09-09 09:15:27,377 - INFO -     Artist: ['FEDUK' 'SLAVA MARLOW' 'Ed Sheeran']
+2025-09-09 09:15:27,377 - INFO -     Genre: ['pop']
+2025-09-09 09:15:27,378 - INFO -     ---
+2025-09-09 09:15:27,378 - INFO -   [ONLINE] Track ID: 37307366
+2025-09-09 09:15:27,378 - INFO -     Name: ['The Winner Takes It All']
+2025-09-09 09:15:27,378 - INFO -     Artist: ['Carla Bruni']
+2025-09-09 09:15:27,378 - INFO -     Genre: ['foreignbard' 'bard']
+2025-09-09 09:15:27,378 - INFO -     ---
+2025-09-09 09:15:27,378 - INFO -   [OFFLINE] Track ID: 60292250
+2025-09-09 09:15:27,378 - INFO -     Name: ['Blinding Lights']
+2025-09-09 09:15:27,378 - INFO -     Artist: ['The Weeknd']
+2025-09-09 09:15:27,378 - INFO -     Genre: ['rnb']
+2025-09-09 09:15:27,378 - INFO -     ---
+2025-09-09 09:15:27,379 - INFO -   [ONLINE] Track ID: 95485531
+2025-09-09 09:15:27,379 - INFO -     Name: ['Leni (Crystal Castles vs GoodBooks)']
+2025-09-09 09:15:27,379 - INFO -     Artist: ['GoodBooks']
+2025-09-09 09:15:27,379 - INFO -     Genre: ['electronics']
+2025-09-09 09:15:27,379 - INFO -     ---
+2025-09-09 09:15:27,379 - INFO -   [OFFLINE] Track ID: 78824202
+2025-09-09 09:15:27,379 - INFO -     Name: ['I WANNA BE YOUR SLAVE']
+2025-09-09 09:15:27,379 - INFO -     Artist: ['Måneskin']
+2025-09-09 09:15:27,379 - INFO -     Genre: ['allrock']
+2025-09-09 09:15:27,379 - INFO -     ---
+2025-09-09 09:15:27,380 - INFO -   [ONLINE] Track ID: 98939242
+2025-09-09 09:15:27,380 - INFO -     Name: ['Просто друг']
+2025-09-09 09:15:27,380 - INFO -     Artist: ['Стас Костюшкин' 'Джарахов']
+2025-09-09 09:15:27,380 - INFO -     Genre: ['pop' 'ruspop']
+2025-09-09 09:15:27,380 - INFO -     ---
+2025-09-09 09:15:27,380 - INFO -   [OFFLINE] Track ID: 81924969
+2025-09-09 09:15:27,380 - INFO -     Name: ['Бесприданница']
+2025-09-09 09:15:27,380 - INFO -     Artist: ['DEAD BLONDE']
+2025-09-09 09:15:27,380 - INFO -     Genre: ['pop' 'ruspop']
+2025-09-09 09:15:27,381 - INFO -     ---
+2025-09-09 09:15:27,381 - INFO -   [ONLINE] Track ID: 92645143
+2025-09-09 09:15:27,381 - INFO -     Name: ['harleys in hawaii']
+2025-09-09 09:15:27,381 - INFO -     Artist: ['Slowed Art']
+2025-09-09 09:15:27,381 - INFO -     Genre: ['pop']
+2025-09-09 09:15:27,381 - INFO -     ---
+2025-09-09 09:15:27,381 - INFO -   [OFFLINE] Track ID: 75944934
+2025-09-09 09:15:27,381 - INFO -     Name: ['Astronaut In The Ocean']
+2025-09-09 09:15:27,381 - INFO -     Artist: ['Masked Wolf']
+2025-09-09 09:15:27,381 - INFO -     Genre: ['foreignrap' 'rap']
+2025-09-09 09:15:27,382 - INFO -     ---
+2025-09-09 09:15:27,382 - INFO - ✓ Test 3 passed: User with history received recommendations
+
+2025-09-09 09:15:27,382 - INFO - 🎉 All tests completed successfully!
