@@ -149,6 +149,7 @@ curl "http://localhost:8000/recommendations/999999999?k=3"
 # Добавляем несколько событий для пользователя 50
 curl -X POST "http://localhost:8000/event?user_id=50&track_id=1000"
 curl -X POST "http://localhost:8000/event?user_id=50&track_id=2000"
+...
 
 # Получаем рекомендации
 curl "http://localhost:8000/recommendations/50?k=5"
